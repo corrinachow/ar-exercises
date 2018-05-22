@@ -10,9 +10,10 @@ puts "----------"
 
 # Your code goes here ...
 
-@store1.employees.create(first_name: "Khurram", last_name: "Virani", hourly_rate: 60)
-@store1.employees.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, hourly_rate: 60)
-@store1.employees.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, hourly_rate: 60)
-@store1.employees.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, hourly_rate: 60)
-@store1.employees.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, hourly_rate: 60)
-@store1.employees.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, hourly_rate: 60)
+revenue = Store.sum(:annual_revenue)
+avg_per_store = revenue / Store.count
+greater_than_1M = Store.where("annual_revenue < ?", 1000000).count
+
+puts revenue
+puts avg_per_store
+puts greater_than_1M
